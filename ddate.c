@@ -245,7 +245,7 @@ main (int argc, char *argv[]) {
     default: goto thud;
     }
     }
-
+  goto thud;
   derp:
     printf("%s", calendar);
     return 0;
