@@ -115,6 +115,45 @@ char *holyday[5][2] = {
     { "Maladay", "Afflux" }
 };
 
+char calendar[] = "                    SM BT PD PP SO                          SM BT PD PP SO\n\
+                    -- -- -- -- --                          -- -- -- -- --\n\
+Jan  1  2  3  4  5   1  2  3  4  5 Chs  Jul  5  6  7  8  9  40 41 42 43 44 Cfn\n\
+     6  7  8  9 10   6  7  8  9 10          10 11 12 13 14  45 46 47 48 49    \n\
+    11 12 13 14 15  11 12 13 14 15          15 16 17 18 19  50 51 52 53 54    \n\
+    16 17 18 19 20  16 17 18 19 20          20 21 22 23 24  55 56 57 58 59    \n\
+    21 22 23 24 25  21 22 23 24 25          25 26 27 28 29  60 61 62 63 64    \n\
+    26 27 28 29 30  26 27 28 29 30          30 31  1  2  3  65 66 67 68 69    \n\
+    31  1  2  3  4  31 32 33 34 35      Aug  4  5  6  7  8  70 71 72 73  1 Bcy\n\
+Feb  5  6  7  8  9  36 37 38 39 40           9 10 11 12 13   2  3  4  5  6    \n\
+    10 11 12 13 14  41 42 43 44 45          14 15 16 17 18   7  8  9 10 11    \n\
+    15 16 17 18 19  46 47 48 49 50          19 20 21 22 23  12 13 14 15 16    \n\
+    20 21 22 23 24  51 52 53 54 55          24 25 26 27 28  17 18 19 20 21    \n\
+    25 26 27 28* 1  56 57 58 59 60          29 30 31  1  2  22 23 24 25 26    \n\
+Mar  2  3  4  5  6  61 62 63 64 65      Sep  3  4  5  6  7  27 28 29 30 31    \n\
+     7  8  9 10 11  66 67 68 69 70           8  9 10 11 12  32 33 34 35 36    \n\
+    12 13 14 15 16  71 72 73  1  2 Dsc      13 14 15 16 17  37 38 39 40 41    \n\
+    17 18 19 20 21   3  4  5  6  7          18 19 20 21 22  42 43 44 45 46    \n\
+    22 23 24 25 26   8  9 10 11 12          23 24 25 26 27  47 48 49 50 51    \n\
+    27 28 29 30 31  13 14 15 16 17          28 29 30  1  2  52 53 54 55 56    \n\
+Apr  1  2  3  4  5  18 19 20 21 22      Oct  3  4  5  6  7  57 58 59 60 61    \n\
+     6  7  8  9 10  23 24 25 26 27           8  9 10 11 12  62 63 64 65 66    \n\
+    11 12 13 14 15  28 29 30 31 32          13 14 15 16 17  67 68 69 70 71    \n\
+    16 17 18 19 20  33 34 35 36 37          18 19 20 21 22  72 73  1  2  3 Afm\n\
+    21 22 23 24 25  38 39 40 41 42          23 24 25 26 27   4  5  6  7  8    \n\
+    26 27 28 29 30  43 44 45 46 47          28 29 30 31  1   9 10 11 12 13    \n\
+May  1  2  3  4  5  48 49 50 51 52      Nov  2  3  4  5  6  14 15 16 17 18    \n\
+     6  7  8  9 10  53 54 55 56 57           7  8  9 10 11  19 20 21 22 23    \n\
+    11 12 13 14 15  58 59 60 61 62          12 13 14 15 16  24 25 26 27 28    \n\
+    16 17 18 19 20  63 64 65 66 67          17 18 19 20 21  29 30 31 32 33    \n\
+    21 22 23 24 25  68 69 70 71 72          22 23 24 25 26  34 35 36 37 38    \n\
+    26 27 28 29 30  73  1  2  3  4 Cfn      27 28 29 30  1  39 40 41 42 43    \n\
+    31  1  2  3  4   5  6  7  8  9      Dec  2  3  4  5  6  44 45 46 47 48    \n\
+Jun  5  6  7  8  9  10 11 12 13 14           7  8  9 10 11  49 50 51 52 53    \n\
+    10 11 12 13 14  15 16 17 18 19          12 13 14 15 16  54 55 56 57 58    \n\
+    15 16 17 18 19  20 21 22 23 24          17 18 19 20 21  59 60 61 62 63    \n\
+    20 21 22 23 24  25 26 27 28 29          22 23 24 25 26  64 65 66 67 68    \n\
+    25 26 27 28 29  30 31 32 33 34          27 28 29 30 31  69 70 71 72 73\n";
+
 struct disc_time {
     int season; /* 0-4 */
     int day; /* 0-72 */
@@ -130,8 +169,8 @@ char *excl[] = {
 #endif /* PRAISE_BOB */
     /* randomness, from the Net and other places. Feel free to add (after
        checking with the relevant authorities, of course). */
-    "Grudnuk demand sustenance!", "Keep the Lasagna flying!",
-    "You are what you see.",
+    "Grudnuk demand sustenance!", "Keep the Lasagna flying!", 
+    "Umlaut Zebra über alles!", "You are what you see.",
     "Or is it?", "This statement is false.",
 #if defined(linux) || defined (__linux__) || defined (__linux)
     "Hail Eris, Hack Linux!",
@@ -192,18 +231,24 @@ main (int argc, char *argv[]) {
     srandom(time(NULL));
     /* do args here */
     for(pi=1; pi<argc; pi++) {
-	switch(argv[pi][0]) {
-	case '+': fnord=argv[pi]+1; break;
-	case '-': 
-	    switch(argv[pi][1]) {
-	    case 'V':
-		printf(("%s (%s)\n"), progname, PACKAGE_STRING);
-	    default: goto usage;
-	    }
-	default: goto thud;
-	}
+    switch(argv[pi][0]) {
+    case '+': fnord=argv[pi]+1; break;
+    case '-': 
+        switch(argv[pi][1]) {
+        case 'V': {
+            printf("%s (%s)\n", progname, PACKAGE_STRING);
+            return 0;
+        }
+        case 'c': goto derp;
+        default: goto usage;
+        }
+    default: goto thud;
+    }
     }
 
+  derp:
+    printf("%s", calendar);
+    return 0;
   thud:
     if (argc-pi==3){ 
 	int moe=atoi(argv[pi]), larry=atoi(argv[pi+1]), curly=atoi(argv[pi+2]);

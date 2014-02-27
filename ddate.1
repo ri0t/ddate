@@ -2,7 +2,7 @@
 .\" Kallisti.
 .TH DDATE 1 "Bureaucracy 3161" "util-linux" "Emperor Norton User Command"
 .SH NAME
-ddate \- convert Gregorian dates to Discordian dates
+ddate \- Discordian Calendar Utility
 .SH SYNOPSIS
 .B ddate
 .RI [ \fB+\fPformat]
@@ -10,6 +10,10 @@ ddate \- convert Gregorian dates to Discordian dates
 .SH DESCRIPTION
 .B ddate
 prints the date in Discordian date format.
+.PP
+Running 
+.B ddate -c 
+prints out the perpetual Gregorian to POEE date converter.
 .PP
 If called with no arguments,
 .B ddate
@@ -78,7 +82,7 @@ Today's St. Tib's Day, 3162.
 .SH BUGS
 
 .B ddate(1)
-will produce undefined behavior if asked to produce the date for St. Tib's
+will produce undefined behaviour if asked to produce the date for St. Tib's
 day and its format string does not contain the St. Tib's Day delimiters
 %{ and %}.
 
@@ -93,6 +97,8 @@ rather than 1998 AD.  Thus, the True X-Day is Cfn 40, 9827.
 Original program by Druel the Chaotic aka Jeremy Johnson (mpython@gnu.ai.mit.edu)
 .br
 Major rewrite by Lee H:. O:. Smith, KYTP, aka Andrew Bulhak (acb@dev.null.org)
+.br
+Perpetual calendar added by Riot the undecisive (riot@c-base.org)
 .br
 Five tons of flax.
 
@@ -110,4 +116,4 @@ Malaclypse the Younger,
 .I "Principia Discordia, Or How I Found Goddess And What I Did To Her When I Found Her"
 
 .SH AVAILABILITY
-The ddate command is available from https://github.com/bo0ts/ddate.
+The c-cabal version of the ddate command is available from https://github.com/ri0t/ddate.
